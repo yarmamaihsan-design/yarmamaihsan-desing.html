@@ -1,0 +1,3473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐝 JYEDA ANUWAL SPELLING BEE COMPETITION B,K,D</title>
+    <style>
+        /* BLACK AND YELLOW COLOR SCHEME */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000, #222222, #111111);
+            color: #ffeb3b;
+            min-height: 100vh;
+            padding: 5px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 235, 59, 0.2);
+            border: 2px solid #ffeb3b;
+            overflow: hidden;
+        }
+
+        /* MODIFIED: Slender header with bee theme */
+        header {
+            background: #000000;
+            color: #ffeb3b;
+            padding: 5px 20px;
+            text-align: center;
+            border-bottom: 3px solid #ffeb3b;
+            position: relative;
+            overflow: hidden;
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .moving-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #000000, #ffeb3b, #000000, #ffeb3b, #000000);
+            color: #000000;
+            padding: 3px 0;
+            font-weight: bold;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            animation: moveBanner 20s linear infinite;
+        }
+
+        @keyframes moveBanner {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin-bottom: 0;
+            margin-top: 0;
+            color: #ffeb3b;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            color: #ffd600;
+        }
+
+        .registration-section {
+            padding: 20px;
+            background: #111111;
+        }
+
+        .main-content {
+            display: flex;
+            min-height: 500px;
+        }
+
+        .schools-panel {
+            flex: 4;
+            background: #111111;
+            padding: 15px;
+            border-right: 3px dashed #ffeb3b;
+        }
+
+        .verification-panel {
+            flex: 6;
+            background: #000000;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-title {
+            font-size: 1.3rem;
+            color: #ffeb3b;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ffeb3b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .round-progress {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #333333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffeb3b, #ffd600);
+            transition: width 0.3s ease;
+        }
+
+        .student-progress {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .search-container {
+            margin-bottom: 15px;
+        }
+
+        #studentSearch {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #111111;
+            color: #ffeb3b;
+        }
+
+        #studentSearch::placeholder {
+            color: #888888;
+        }
+
+        .school-list {
+            max-height: 350px;
+            overflow-y: auto;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            background: #111111;
+        }
+
+        .school-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #333333;
+        }
+
+        .school-header {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            color: #ffd600;
+        }
+
+        .student-name {
+            padding-left: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 6px 12px;
+            margin: 2px 0;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: #ffeb3b;
+            background: #222222;
+        }
+
+        .student-name:hover {
+            background: #ffeb3b;
+            color: #000000;
+            transform: scale(1.02);
+        }
+
+        .current-student {
+            background: #ffeb3b;
+            color: #000000;
+            font-weight: bold;
+            border: 2px solid #ffd600;
+        }
+
+        .completed-student {
+            background: #333300;
+            color: #ffeb3b;
+            border: 1px solid #666600;
+        }
+
+        .student-info {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .student-info h4 {
+            margin-bottom: 8px;
+            color: #ffd600;
+        }
+
+        .student-detail {
+            margin: 6px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .word-search-container {
+            margin-bottom: 15px;
+        }
+
+        .word-search-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        #wordSearch {
+            flex: 1;
+            padding: 10px 12px;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #111111;
+            color: #ffeb3b;
+        }
+
+        #wordSearch::placeholder {
+            color: #888888;
+        }
+
+        .search-btn {
+            padding: 10px 16px;
+            background: #ffeb3b;
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .search-btn:hover {
+            background: #ffd600;
+            transform: translateY(-2px);
+        }
+
+        #wordSearchResults {
+            margin-top: 8px;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            max-height: 180px;
+            overflow-y: auto;
+            background: #111111;
+            display: none;
+        }
+
+        .word-result {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #333333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffeb3b;
+        }
+
+        .word-result:hover {
+            background: #ffeb3b;
+            color: #000000;
+        }
+
+        .word-status {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: #ffeb3b;
+            color: #000000;
+        }
+
+        .word-used {
+            background: #333333;
+            color: #ffeb3b;
+        }
+
+        .word-expired {
+            background: #666666;
+            color: #ffeb3b;
+        }
+
+        .current-word-display {
+            background: #111111;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+            border: 2px dashed #ffeb3b;
+            position: relative;
+        }
+
+        .timer-container {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #ff9800;
+            color: #000000;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .timer-warning {
+            background: #ff5722;
+            animation: pulse 1s infinite;
+        }
+
+        .letter-by-letter {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffeb3b;
+            margin: 12px 0;
+            letter-spacing: 6px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .word-number {
+            font-size: 1.1rem;
+            color: #ffd600;
+        }
+
+        .spelling-input-container {
+            margin: 15px 0;
+        }
+
+        #spellingInput {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: #111111;
+            color: #ffeb3b;
+        }
+
+        #spellingInput::placeholder {
+            color: #888888;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .verify-btn {
+            background: #ffeb3b;
+            color: #000000;
+        }
+
+        .verify-btn:hover {
+            background: #ffd600;
+            transform: translateY(-2px);
+        }
+
+        .verify-btn:disabled {
+            background: #666666;
+            color: #999999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .next-btn {
+            background: #ff9800;
+            color: #000000;
+        }
+
+        .next-btn:hover {
+            background: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .retry-btn {
+            background: #ff5722;
+            color: #000000;
+        }
+
+        .retry-btn:hover {
+            background: #ff4500;
+            transform: translateY(-2px);
+        }
+
+        .show-spelling-btn {
+            background: #ff9800;
+            color: #000000;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        .show-spelling-btn:hover {
+            background: #ff8c00;
+        }
+
+        .result-message {
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .correct {
+            background: #333300;
+            color: #ffeb3b;
+            border: 2px solid #666600;
+        }
+
+        .incorrect {
+            background: #331100;
+            color: #ff9800;
+            border: 2px solid #663300;
+        }
+
+        .expired {
+            background: #333333;
+            color: #cccccc;
+            border: 2px solid #666666;
+        }
+
+        .round-management {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .leaderboard {
+            background: #111111;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            flex-grow: 1;
+            border: 2px solid #ffeb3b;
+        }
+
+        .leaderboard h3 {
+            text-align: center;
+            margin-bottom: 12px;
+            color: #ffd600;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            margin: 4px 0;
+            background: rgba(255, 235, 59, 0.1);
+            border-radius: 5px;
+            align-items: center;
+        }
+
+        .leader-position {
+            font-weight: bold;
+            width: 25px;
+            text-align: center;
+        }
+
+        .leader-name {
+            flex: 1;
+            padding: 0 8px;
+        }
+
+        .leader-score {
+            font-weight: bold;
+            color: #ffd600;
+        }
+
+        .first-place {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), rgba(255, 215, 0, 0.1));
+            border-left: 4px solid #ffd700;
+        }
+
+        .second-place {
+            background: linear-gradient(90deg, rgba(192, 192, 192, 0.2), rgba(192, 192, 192, 0.1));
+            border-left: 4px solid #c0c0c0;
+        }
+
+        .third-place {
+            background: linear-gradient(90deg, rgba(205, 127, 50, 0.2), rgba(205, 127, 50, 0.1));
+            border-left: 4px solid #cd7f32;
+        }
+
+        .student-progress-bar {
+            width: 50px;
+            height: 6px;
+            background: #333333;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-left: 8px;
+        }
+
+        .student-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffeb3b, #ffd600);
+            transition: width 0.3s ease;
+        }
+
+        .medal-icon {
+            margin-left: 4px;
+            font-size: 1.1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* MODIFIED: Very small footer */
+        footer {
+            text-align: center;
+            padding: 8px;
+            background: #000000;
+            color: #ffeb3b;
+            font-size: 0.7rem;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 2px solid #ffeb3b;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* NEW REGISTRATION STYLES */
+        .registration-panel {
+            background: #111111;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(255, 235, 59, 0.1);
+            border: 2px solid #ffeb3b;
+        }
+
+        .registration-stats {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .stats-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .registration-form {
+            background: #111111;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #000000;
+            color: #ffeb3b;
+        }
+
+        .form-group input::placeholder {
+            color: #888888;
+        }
+
+        .registered-students {
+            max-height: 250px;
+            overflow-y: auto;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            background: #111111;
+            margin-bottom: 15px;
+        }
+
+        .student-item {
+            padding: 10px 12px;
+            border-bottom: 1px solid #333333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ffeb3b;
+        }
+
+        .student-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .words-management {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .timer-settings {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .settings-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .settings-group input {
+            width: 70px;
+            padding: 6px;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            font-size: 1rem;
+            text-align: center;
+            background: #000000;
+            color: #ffeb3b;
+        }
+
+        .add-btn {
+            background: #ffeb3b;
+            color: #000000;
+        }
+
+        .add-btn:hover {
+            background: #ffd600;
+            transform: translateY(-2px);
+        }
+
+        .edit-btn {
+            background: #ff9800;
+            color: #000000;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+
+        .delete-btn {
+            background: #ff5722;
+            color: #000000;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+        }
+
+        .start-btn {
+            background: linear-gradient(90deg, #ffeb3b, #ff9800);
+            color: #000000;
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .start-btn:hover {
+            background: linear-gradient(90deg, #ffd600, #ff8c00);
+            transform: translateY(-2px);
+        }
+
+        .start-btn:disabled {
+            background: #666666;
+            color: #999999;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* NEW STYLES FOR UPGRADES */
+        .round-settings {
+            background: #222222;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeb3b;
+        }
+
+        .student-removal-panel {
+            background: #331100;
+            color: #ff9800;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+            border: 2px solid #ff5722;
+        }
+
+        .word-management-panel {
+            background: #333300;
+            color: #ffeb3b;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+            border: 2px solid #ffd600;
+        }
+
+        .removal-controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .password-protected {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #ffeb3b;
+        }
+
+        .expelled-students {
+            background: #331100;
+            color: #ff9800;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 8px;
+            display: none;
+            border: 1px solid #ff5722;
+        }
+
+        .results-section {
+            background: #111111;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(255, 235, 59, 0.1);
+            border: 2px solid #ffeb3b;
+            display: none;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #333333;
+            color: #ffeb3b;
+        }
+
+        .results-table th {
+            background: #222222;
+            color: #ffd600;
+            font-weight: bold;
+        }
+
+        .results-table tr:hover {
+            background: rgba(255, 235, 59, 0.1);
+        }
+
+        .column-toggle {
+            background: #ff9800;
+            color: #000000;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .column-toggle:hover {
+            background: #ff8c00;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        /* NEW: Red Glowing Alarm Styles */
+        .countdown-alarm {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: #ff5722;
+            padding: 25px 40px;
+            border-radius: 15px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(255, 87, 34, 0.8);
+            animation: redGlow 0.5s infinite alternate;
+            display: none;
+            border: 3px solid #ff5722;
+        }
+
+        .countdown-alarm-message {
+            font-size: 1.3rem;
+            margin-top: 8px;
+            opacity: 0.9;
+            color: #ff9800;
+        }
+
+        @keyframes redGlow {
+            0% {
+                box-shadow: 0 0 25px rgba(255, 87, 34, 0.6);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                box-shadow: 0 0 50px rgba(255, 87, 34, 1);
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+
+        .alarm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            display: none;
+        }
+
+        /* NEW CSV UPLOAD STYLES */
+        .csv-upload-section {
+            background: #222222;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px dashed #ffeb3b;
+        }
+
+        .upload-group {
+            margin-bottom: 12px;
+        }
+
+        .upload-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+
+        .upload-group input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            background: #000000;
+            color: #ffeb3b;
+        }
+
+        .upload-info {
+            font-size: 0.85rem;
+            color: #ffd600;
+            margin-top: 6px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .reserve-words-section {
+            background: #333300;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #ffd600;
+        }
+
+        .reserve-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .reserve-toggle {
+            background: #ff9800;
+            color: #000000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .reserve-toggle.active {
+            background: #ffeb3b;
+            color: #000000;
+        }
+
+        .csv-preview {
+            background: #111111;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ffeb3b;
+            display: none;
+        }
+
+        .csv-preview-item {
+            padding: 4px 8px;
+            border-bottom: 1px solid #333333;
+            color: #ffeb3b;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .schools-panel {
+                border-right: none;
+                border-bottom: 3px dashed #ffeb3b;
+            }
+
+            .countdown-alarm {
+                font-size: 1.8rem;
+                padding: 15px 25px;
+            }
+            
+            .countdown-alarm-message {
+                font-size: 1rem;
+            }
+            
+            .settings-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NEW: Countdown Alarm Elements -->
+    <div class="alarm-overlay" id="alarmOverlay"></div>
+    <div class="countdown-alarm" id="countdownAlarm">
+        <div>🚨 TIME ALERT! 🚨</div>
+        <div class="countdown-alarm-message">10 Seconds Remaining!</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="moving-banner" id="movingBanner">
+                🐝 Welcome to J-YEDA Spelling Bee Annual Competition 2025! 🐝 Showcasing Excellence in Spelling! 🐝
+            </div>
+            <h1>🐝 JYEDA ANUWAL SPELLING BEE COMPETITION B,K,D 🐝</h1>
+            <div class="subtitle">Complete Registration & Competition System with CSV Upload</div>
+        </header>
+        
+        <!-- REGISTRATION SECTION - Shows first -->
+        <div class="registration-section" id="registrationSection">
+            <div class="registration-panel">
+                <h3 class="panel-title">🐝 Student Registration & CSV Upload</h3>
+                
+                <div class="registration-stats">
+                    <div class="stats-info">
+                        <div>Students Registered: <span id="studentsCount">0</span>/60</div>
+                        <div>Words Added: <span id="wordsCount">0</span>/100</div>
+                    </div>
+                    <div class="stats-info">
+                        <div>Timer Setting: <span id="timerValue">60</span> seconds</div>
+                        <div>Status: <span id="registrationStatus">Ready</span></div>
+                    </div>
+                </div>
+
+                <!-- NEW: CSV UPLOAD FOR STUDENTS -->
+                <div class="csv-upload-section">
+                    <h4>📁 Upload Students CSV File</h4>
+                    <div class="upload-group">
+                        <label for="studentCsvFile">Upload CSV File (Format: Name,School):</label>
+                        <input type="file" id="studentCsvFile" accept=".csv" onchange="handleStudentCsvUpload(event)">
+                    </div>
+                    <div class="upload-info">
+                        🐝 CSV Format: First column = Student Name, Second column = School Name<br>
+                        🐝 Example: "John Doe,AL-HIKMAH INTERNATIONAL SCHOOL"
+                    </div>
+                    <div id="csvPreview" class="csv-preview">
+                        <!-- CSV preview will appear here -->
+                    </div>
+                    <div class="removal-controls" style="margin-top: 12px;">
+                        <button class="add-btn" onclick="processCsvUpload()">Process CSV Upload</button>
+                        <button class="retry-btn" onclick="clearCsvUpload()">Clear Upload</button>
+                    </div>
+                </div>
+
+                <div class="registration-form">
+                    <h4>🐝 Add Individual Student (Optional)</h4>
+                    <div class="form-group">
+                        <label for="studentName">Student Name:</label>
+                        <input type="text" id="studentName" placeholder="Enter student name" onkeypress="handleEnterKey(event, 'addStudent')">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentSchool">School:</label>
+                        <select id="studentSchool" onkeypress="handleEnterKey(event, 'addStudent')">
+                            <option value="">Select School</option>
+                            <option value="AL-HIKMAH INTERNATIONAL SCHOOL">AL-HIKMAH INTERNATIONAL SCHOOL</option>
+                            <option value="AL-HIJRAH INTERNATIONAL SCHOOL">AL-HIJRAH INTERNATIONAL SCHOOL</option>
+                            <option value="GREAT ALBARKA INTERNATIONAL SCHOOL">GREAT ALBARKA INTERNATIONAL SCHOOL</option>
+                            <option value="ZARENAWA JUNIOR SECONDARY SCHOOL">ZARENAWA JUNIOR SECONDARY SCHOOL</option>
+                            <option value="MASAMAWA JUNIOR SECONDARY SCHOOL">MASAMAWA JUNIOR SECONDARY SCHOOL</option>
+                            <option value="OTHER">OTHER SCHOOL</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="otherSchoolGroup" style="display: none;">
+                        <label for="otherSchool">Other School Name:</label>
+                        <input type="text" id="otherSchool" placeholder="Enter school name" onkeypress="handleEnterKey(event, 'addStudent')">
+                    </div>
+                    <button class="add-btn" onclick="addStudent()" id="addStudentBtn">Add Student</button>
+                </div>
+
+                <div class="registered-students" id="registeredStudents">
+                    <!-- Registered students will appear here -->
+                </div>
+
+                <!-- NEW: RESERVE WORDS CSV UPLOAD -->
+                <div class="reserve-words-section">
+                    <h4>📁 Reserve Words Management</h4>
+                    <div class="upload-group">
+                        <label for="reserveWordsFile">Upload Reserve Words CSV:</label>
+                        <input type="file" id="reserveWordsFile" accept=".csv" onchange="handleReserveWordsUpload(event)">
+                    </div>
+                    <div class="upload-info">
+                        🐝 CSV Format: One word per line<br>
+                        🐝 Reserve words will replace current word list when enabled
+                    </div>
+                    <div id="reserveWordsPreview" class="csv-preview">
+                        <!-- Reserve words preview will appear here -->
+                    </div>
+                    <div class="reserve-controls">
+                        <span>Reserve Words Status:</span>
+                        <span id="reserveWordsCount">0 words loaded</span>
+                        <button class="reserve-toggle" id="toggleReserveWords" onclick="toggleReserveWords()">Enable Reserve Words</button>
+                    </div>
+                </div>
+
+                <div class="words-management">
+                    <h4>🐝 Word Management</h4>
+                    <div class="form-group">
+                        <label for="newWord">Add Word:</label>
+                        <input type="text" id="newWord" placeholder="Enter spelling word" onkeypress="handleEnterKey(event, 'addWord')">
+                    </div>
+                    <button class="add-btn" onclick="addWord()" id="addWordBtn">Add Word</button>
+                    <div id="wordList" style="margin-top: 8px; max-height: 120px; overflow-y: auto; color: #ffeb3b;">
+                        <!-- Word list will appear here -->
+                    </div>
+                </div>
+
+                <!-- NEW ROUND SETTINGS -->
+                <div class="round-settings">
+                    <h4>🐝 Round Settings</h4>
+                    <div class="settings-group">
+                        <label>Total Rounds (1-10):</label>
+                        <input type="number" id="totalRoundsInput" min="1" max="10" value="10" onkeypress="handleEnterKey(event, 'updateTotalRounds')">
+                        <button class="add-btn" onclick="updateTotalRounds()" id="updateRoundsBtn">Update Rounds</button>
+                    </div>
+                </div>
+
+                <div class="timer-settings">
+                    <h4>🐝 Timer Settings</h4>
+                    <div class="settings-group">
+                        <label>Spelling Time (seconds):</label>
+                        <input type="number" id="spellingTime" min="10" max="300" value="60" onkeypress="handleEnterKey(event, 'updateTimer')">
+                        <button class="add-btn" onclick="updateTimer()" id="updateTimerBtn">Update Timer</button>
+                    </div>
+                </div>
+
+                <button class="start-btn" id="startCompetitionBtn" onclick="startCompetition()" disabled>🐝 Start Competition</button>
+            </div>
+        </div>
+
+        <!-- COMPETITION SECTION - Hidden until registration complete -->
+        <div class="main-content hidden" id="competitionSection">
+            <!-- LEFT PANEL: Schools & Students - ORIGINAL STRUCTURE PRESERVED -->
+            <div class="schools-panel">
+                <h3 class="panel-title">🐝 Students Progress</h3>
+                
+                <div class="round-progress">
+                    <div class="progress-info">
+                        <div class="round-detail">Round: <span id="currentRoundDisplay">01</span>/<span id="totalRoundsDisplay">10</span></div>
+                        <div class="round-detail">Student: <span id="currentStudentPosition">01</span>/<span id="totalStudents">00</span></div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="roundProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="student-progress">
+                    <div class="progress-info">
+                        <div class="round-detail">Current: <span id="currentStudentName">-</span></div>
+                        <div class="round-detail">Score: <span id="currentStudentScore">0</span></div>
+                    </div>
+                </div>
+                
+                <div class="search-container">
+                    <input type="text" id="studentSearch" placeholder="Search for student by name..." onkeypress="handleEnterKey(event, 'searchStudent')">
+                </div>
+                
+                <div class="school-list" id="schoolList">
+                    <!-- Schools will be populated by JavaScript -->
+                </div>
+                
+                <!-- FIXED STUDENT PROFILE BOARD -->
+                <div id="selectedStudentInfo" class="student-info">
+                    <h4>🐝 Current Participant Profile</h4>
+                    <div class="student-detail">
+                        <span>Name:</span>
+                        <span id="profileStudentName">-</span>
+                    </div>
+                    <div class="student-detail">
+                        <span>School:</span>
+                        <span id="profileStudentSchool">-</span>
+                    </div>
+                    <div class="student-detail">
+                        <span>Score:</span>
+                        <span id="profileStudentScore">0</span>
+                    </div>
+                    <div class="student-detail">
+                        <span>Questions Completed:</span>
+                        <span id="profileQuestionsCompleted">0/10</span>
+                    </div>
+                    <div class="student-detail">
+                        <span>Current Round:</span>
+                        <span id="profileCurrentRound">1</span>
+                    </div>
+                    <div class="student-detail">
+                        <span>Status:</span>
+                        <span id="profileStudentStatus">Waiting</span>
+                    </div>
+                </div>
+
+                <!-- STUDENT REMOVAL PANEL -->
+                <div class="student-removal-panel" id="studentRemovalPanel">
+                    <h4>🐝 Round Completion - Student Management</h4>
+                    <p>Round <span id="removalRoundNumber">1</span> completed! Would you like to remove any students?</p>
+                    <div class="removal-controls">
+                        <button class="verify-btn" onclick="enableStudentRemoval()" id="enableRemovalBtn">Yes, Enable Removal</button>
+                        <button class="retry-btn" onclick="skipStudentRemoval()" id="skipRemovalBtn">No, Continue</button>
+                    </div>
+                    <div id="expelledStudents" class="expelled-students">
+                        <!-- Expelled students will appear here -->
+                    </div>
+                </div>
+
+                <!-- WORD MANAGEMENT PANEL -->
+                <div class="word-management-panel" id="wordManagementPanel">
+                    <h4>🐝 Round Completion - Word Management</h4>
+                    <p>Round <span id="wordManagementRoundNumber">1</span> completed! Manage words for next round.</p>
+                    <div class="removal-controls">
+                        <button class="verify-btn" onclick="enableWordManagement()" id="enableWordMgmtBtn">Manage Words</button>
+                        <button class="retry-btn" onclick="skipWordManagement()" id="skipWordMgmtBtn">Skip Word Management</button>
+                    </div>
+                    <div id="wordManagementArea" style="display: none; margin-top: 12px;">
+                        <div class="form-group">
+                            <input type="text" id="newWordRound" placeholder="Enter new word for next round" style="color: #ffeb3b;" onkeypress="handleEnterKey(event, 'addWordDuringCompetition')">
+                            <button class="add-btn" onclick="addWordDuringCompetition()" style="margin-top: 8px;" id="addWordCompBtn">Add Word</button>
+                        </div>
+                        <div id="competitionWordList" style="max-height: 180px; overflow-y: auto; margin-top: 8px;">
+                            <!-- Competition word list will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RIGHT PANEL: Word Verification - ORIGINAL STRUCTURE PRESERVED -->
+            <div class="verification-panel">
+                <h3 class="panel-title">🐝 Word Verification</h3>
+                
+                <div class="word-search-container">
+                    <div class="word-search-form">
+                        <input type="text" id="wordSearch" placeholder="Enter word number (01-100)..." onkeypress="handleEnterKey(event, 'searchWord')">
+                        <button class="search-btn" onclick="searchWord()" id="searchWordBtn">Search</button>
+                    </div>
+                    <div id="wordSearchResults">
+                        <!-- Search results will appear here -->
+                    </div>
+                </div>
+
+                <!-- TOGGLE BUTTONS FOR COLUMNS -->
+                <div class="toggle-buttons">
+                    <button class="column-toggle" onclick="toggleWordDisplaySection()" onkeypress="handleEnterKey(event, 'toggleWordDisplaySection')">👁️ Toggle Word Display</button>
+                    <button class="column-toggle" onclick="toggleSpellingInputSection()" onkeypress="handleEnterKey(event, 'toggleSpellingInputSection')">⌨️ Toggle Spelling Input</button>
+                </div>
+                
+                <!-- WORD DISPLAY SECTION - Can be toggled independently -->
+                <div id="currentWordSection" class="current-word-display">
+                    <div class="timer-container" id="wordTimer">01:00</div>
+                    <h4>Word to Spell:</h4>
+                    <div class="word-number">Word #<span id="currentWordNumber">00</span></div>
+                    <div class="button-group" style="margin-top: 12px;">
+                        <button class="show-spelling-btn" id="showSpellingBtn" onclick="toggleWordDisplay()" onkeypress="handleEnterKey(event, 'toggleWordDisplay')">🔒 Show Spelling</button>
+                    </div>
+                    <div id="wordDisplay" class="letter-by-letter password-protected hidden">
+                        [Word will appear here]
+                        <button class="password-toggle" onclick="toggleWordVisibility()" onkeypress="handleEnterKey(event, 'toggleWordVisibility')">👁️</button>
+                    </div>
+                </div>
+                
+                <!-- SPELLING INPUT SECTION - Can be toggled independently -->
+                <div id="spellingSection" class="spelling-input-container">
+                    <h4>Student's Spelling (Letter by Letter):</h4>
+                    <input type="text" id="spellingInput" placeholder="Enter spelling letter by letter (e.g. m a r k e t)..." onkeypress="handleEnterKey(event, 'checkSpelling')">
+                    
+                    <div class="button-group">
+                        <button class="verify-btn" id="verifyBtn" onclick="checkSpelling()" onkeypress="handleEnterKey(event, 'checkSpelling')">Verify Spelling</button>
+                    </div>
+                </div>
+                
+                <div id="resultsSection" class="hidden">
+                    <div id="resultMessage" class="result-message"></div>
+                    
+                    <div class="button-group">
+                        <button class="retry-btn" id="retryBtn" onclick="retrySpelling()" class="hidden" onkeypress="handleEnterKey(event, 'retrySpelling')">Second Try</button>
+                    </div>
+                </div>
+                
+                <div class="round-management">
+                    <div class="progress-info">
+                        <div class="round-detail">Total Rounds: <span id="totalRounds">10</span></div>
+                        <div class="round-detail">Students Completed: <span id="studentsCompleted">0</span>/<span id="totalStudentsCount">00</span></div>
+                        <div class="round-detail">Words Remaining: <span id="wordsRemaining">100</span></div>
+                    </div>
+                </div>
+                
+                <div class="leaderboard">
+                    <h3>🐝 Round Leaders 🎖️</h3>
+                    <div id="leaderboardList">
+                        <!-- Leaderboard will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group" style="margin-top: 15px;">
+                        <button class="next-btn" id="nextStudentBtn" onclick="nextStudent()" onkeypress="handleEnterKey(event, 'nextStudent')">🐝 Next Student</button>
+                        <button class="next-btn" id="nextRoundBtn" onclick="nextRound()" onkeypress="handleEnterKey(event, 'nextRound')">🐝 Next Round</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINAL RESULTS SECTION - Hidden until competition complete -->
+        <div class="results-section hidden" id="finalResultsSection">
+            <div class="results-header">
+                <h2>🐝 JYEDA ANUWAL SPELLING BEE COMPETITION 2025 - FINAL RESULTS 🏆</h2>
+                <p>🐝 Complete Ranking of All Participants 🐝</p>
+            </div>
+            
+            <div class="registration-stats">
+                <div class="stats-info">
+                    <div>Total Participants: <span id="finalTotalParticipants">0</span></div>
+                    <div>Total Rounds Completed: <span id="finalTotalRounds">10</span></div>
+                </div>
+                <div class="stats-info">
+                    <div>Competition Date: <span id="finalCompetitionDate">-</span></div>
+                    <div>Top Score: <span id="finalTopScore">0</span></div>
+                </div>
+            </div>
+
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Student Name</th>
+                        <th>School</th>
+                        <th>Final Score</th>
+                        <th>Questions Attempted</th>
+                        <th>Status</th>
+                        <th>Achievement</th>
+                    </tr>
+                </thead>
+                <tbody id="finalResultsTable">
+                    <!-- Final results will be populated here -->
+                </tbody>
+            </table>
+
+            <div class="button-group">
+                <button class="verify-btn" onclick="printResults()" onkeypress="handleEnterKey(event, 'printResults')">🖨️ Print Results</button>
+                <button class="next-btn" onclick="restartCompetition()" onkeypress="handleEnterKey(event, 'restartCompetition')">🔄 New Competition</button>
+                <button class="retry-btn" onclick="backToCompetition()" onkeypress="handleEnterKey(event, 'backToCompetition')">← Back to Competition</button>
+            </div>
+        </div>
+        
+        <footer>
+            🐝 JYEDA ANUWAL SPELLING BEE COMPETITION B,K,D &copy; 2023 | Complete Competition 🐝
+        </footer>
+    </div>
+
+    <script>
+        // Global Data Storage - ENHANCED WITH CSV AND RESERVE WORDS
+        let competitionData = {
+            schools: [
+                "AL-HIKMAH INTERNATIONAL SCHOOL",
+                "AL-HIJRAH INTERNATIONAL SCHOOL", 
+                "GREAT ALBARKA INTERNATIONAL SCHOOL",
+                "ZARENAWA JUNIOR SECONDARY SCHOOL",
+                "MASAMAWA JUNIOR SECONDARY SCHOOL"
+            ],
+            students: [],
+            words: [],
+            // NEW: Reserve words storage
+            reserveWords: [],
+            reserveWordsEnabled: false,
+            csvUploadData: [], // Store CSV data before processing
+            reserveCsvData: [], // Store reserve words CSV data
+            currentRound: 1,
+            currentStudentIndex: 0,
+            currentQuestionNumber: 0,
+            studentsCompleted: 0,
+            currentStudentId: null,
+            currentWord: null,
+            hasRetry: false,
+            timerInterval: null,
+            timeRemaining: 60,
+            competitionStarted: false,
+            totalRounds: 10,
+            isWordVisible: false,
+            maxStudents: 60,
+            maxWords: 100,
+            spellingTime: 60,
+            // Student removal
+            studentRemovalEnabled: false,
+            expelledStudents: [],
+            isWordPasswordVisible: false,
+            wordManagementEnabled: false,
+            competitionCompleted: false,
+            originalStudents: [],
+            // Alarm state
+            alarmActive: false,
+            // Timer control
+            timerPaused: false,
+            // NEW: Current active button for Enter navigation
+            currentActiveAction: null
+        };
+
+        // Initialize the application
+        function init() {
+            try {
+                loadData();
+                renderRegistrationPanel();
+                setupEventListeners();
+                startMovingBanner();
+                setupGlobalEnterKeyNavigation();
+                console.log("🐝 Application initialized successfully");
+            } catch (error) {
+                console.error("🐝 Initialization error:", error);
+                alert("🐝 Error initializing application. Please refresh the page.");
+            }
+        }
+
+        // NEW: Global Enter Key Navigation System
+        function setupGlobalEnterKeyNavigation() {
+            try {
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+                        const activeElement = document.activeElement;
+                        
+                        // Skip if in text input or textarea
+                        if (activeElement.tagName === 'INPUT' && activeElement.type === 'text' && 
+                            activeElement.id !== 'spellingInput') {
+                            return; // Let default Enter work in text inputs
+                        }
+                        
+                        // Skip if in spelling input (has its own handler)
+                        if (activeElement.id === 'spellingInput') {
+                            return;
+                        }
+                        
+                        // Skip if in search inputs
+                        if (activeElement.id === 'studentSearch' || activeElement.id === 'wordSearch') {
+                            return;
+                        }
+                        
+                        // Prevent default only for our navigation
+                        e.preventDefault();
+                        
+                        // Navigate based on current state
+                        navigateWithEnterKey();
+                    }
+                });
+            } catch (error) {
+                console.error("🐝 Enter key setup error:", error);
+            }
+        }
+
+        // NEW: Smart Enter Key Navigation
+        function navigateWithEnterKey() {
+            try {
+                // Check which section is active
+                if (!document.getElementById('competitionSection').classList.contains('hidden')) {
+                    // Competition section is active
+                    handleCompetitionEnterNavigation();
+                } else if (!document.getElementById('registrationSection').classList.contains('hidden')) {
+                    // Registration section is active
+                    handleRegistrationEnterNavigation();
+                } else if (!document.getElementById('finalResultsSection').classList.contains('hidden')) {
+                    // Results section is active
+                    handleResultsEnterNavigation();
+                }
+            } catch (error) {
+                console.error("🐝 Enter navigation error:", error);
+            }
+        }
+
+        // NEW: Handle Enter in registration section
+        function handleRegistrationEnterNavigation() {
+            try {
+                // Check for CSV file ready to process
+                if (competitionData.csvUploadData.length > 0 && document.getElementById('studentCsvFile').files.length > 0) {
+                    processCsvUpload();
+                    return;
+                }
+                
+                // Check for reserve words file ready
+                if (competitionData.reserveCsvData.length > 0 && document.getElementById('reserveWordsFile').files.length > 0) {
+                    toggleReserveWords();
+                    return;
+                }
+                
+                // Default to start competition if ready
+                const startBtn = document.getElementById('startCompetitionBtn');
+                if (!startBtn.disabled && competitionData.students.length > 0 && competitionData.words.length >= 10) {
+                    startCompetition();
+                }
+            } catch (error) {
+                console.error("🐝 Registration enter navigation error:", error);
+            }
+        }
+
+        // NEW: Handle Enter in competition section
+        function handleCompetitionEnterNavigation() {
+            try {
+                // Check current state
+                if (!document.getElementById('resultsSection').classList.contains('hidden')) {
+                    const resultMessage = document.getElementById('resultMessage').textContent;
+                    
+                    if (resultMessage.includes('Incorrect') && !document.getElementById('retryBtn').classList.contains('hidden')) {
+                        retrySpelling();
+                    } else if (resultMessage.includes('Round') && resultMessage.includes('Completed')) {
+                        // Round completion - show next options
+                        if (!document.getElementById('nextRoundBtn').classList.contains('hidden')) {
+                            nextRound();
+                        } else if (!document.getElementById('nextStudentBtn').classList.contains('hidden')) {
+                            nextStudent();
+                        }
+                    } else if (resultMessage.includes('Please select a word')) {
+                        // Word selection needed
+                        document.getElementById('wordSearch').focus();
+                    }
+                } else if (!document.getElementById('currentWordSection').classList.contains('hidden')) {
+                    // Word is displayed, ready for spelling
+                    document.getElementById('spellingInput').focus();
+                } else if (document.getElementById('studentRemovalPanel').style.display === 'block') {
+                    // Student removal panel active
+                    if (document.getElementById('enableRemovalBtn')) {
+                        enableStudentRemoval();
+                    }
+                } else if (document.getElementById('wordManagementPanel').style.display === 'block') {
+                    // Word management panel active
+                    if (document.getElementById('enableWordMgmtBtn')) {
+                        enableWordManagement();
+                    }
+                } else if (document.getElementById('wordSearchResults').style.display === 'block') {
+                    // Word search results visible
+                    const firstResult = document.querySelector('.word-result');
+                    if (firstResult) {
+                        firstResult.click();
+                    }
+                }
+            } catch (error) {
+                console.error("🐝 Competition enter navigation error:", error);
+            }
+        }
+
+        // NEW: Handle Enter in results section
+        function handleResultsEnterNavigation() {
+            try {
+                // Focus print button by default
+                document.querySelector('.verify-btn').focus();
+            } catch (error) {
+                console.error("🐝 Results enter navigation error:", error);
+            }
+        }
+
+        // NEW: Generic Enter key handler for specific buttons
+        function handleEnterKey(event, action) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                switch(action) {
+                    case 'addStudent':
+                        addStudent();
+                        break;
+                    case 'addWord':
+                        addWord();
+                        break;
+                    case 'searchWord':
+                        searchWord();
+                        break;
+                    case 'checkSpelling':
+                        if (!document.getElementById('retryBtn').classList.contains('hidden')) {
+                            retrySpelling();
+                        } else {
+                            checkSpelling();
+                        }
+                        break;
+                    case 'retrySpelling':
+                        retrySpelling();
+                        break;
+                    case 'nextStudent':
+                        nextStudent();
+                        break;
+                    case 'nextRound':
+                        nextRound();
+                        break;
+                    case 'updateTotalRounds':
+                        updateTotalRounds();
+                        break;
+                    case 'updateTimer':
+                        updateTimer();
+                        break;
+                    case 'toggleWordDisplay':
+                        toggleWordDisplay();
+                        break;
+                    case 'toggleWordVisibility':
+                        toggleWordVisibility();
+                        break;
+                    case 'toggleWordDisplaySection':
+                        toggleWordDisplaySection();
+                        break;
+                    case 'toggleSpellingInputSection':
+                        toggleSpellingInputSection();
+                        break;
+                    case 'printResults':
+                        printResults();
+                        break;
+                    case 'restartCompetition':
+                        restartCompetition();
+                        break;
+                    case 'backToCompetition':
+                        backToCompetition();
+                        break;
+                    case 'searchStudent':
+                        // Just focus the search field
+                        break;
+                }
+            }
+        }
+
+        // NEW: CSV Upload Handler for Students
+        function handleStudentCsvUpload(event) {
+            try {
+                const file = event.target.files[0];
+                if (!file) {
+                    alert('🐝 Please select a CSV file');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const csvContent = e.target.result;
+                        const lines = csvContent.split('\n');
+                        competitionData.csvUploadData = [];
+                        
+                        const previewDiv = document.getElementById('csvPreview');
+                        previewDiv.innerHTML = '';
+                        previewDiv.style.display = 'block';
+                        
+                        lines.forEach((line, index) => {
+                            if (line.trim()) {
+                                const [name, school] = line.split(',').map(item => item.trim());
+                                if (name && school) {
+                                    competitionData.csvUploadData.push({ name, school });
+                                    
+                                    const previewItem = document.createElement('div');
+                                    previewItem.className = 'csv-preview-item';
+                                    previewItem.textContent = `${index + 1}. ${name} - ${school}`;
+                                    previewDiv.appendChild(previewItem);
+                                }
+                            }
+                        });
+                        
+                        if (competitionData.csvUploadData.length === 0) {
+                            previewDiv.innerHTML = '<div class="csv-preview-item">🐝 No valid data found in CSV file</div>';
+                        } else {
+                            previewDiv.innerHTML = `<div class="csv-preview-item">🐝 Preview (${competitionData.csvUploadData.length} students):</div>` + previewDiv.innerHTML;
+                        }
+                        
+                        alert(`🐝 CSV file loaded successfully! ${competitionData.csvUploadData.length} students found. Click "Process CSV Upload" to add them.`);
+                    } catch (error) {
+                        console.error('🐝 CSV parsing error:', error);
+                        alert('🐝 Error parsing CSV file. Please ensure format is: Name,School');
+                    }
+                };
+                
+                reader.onerror = function() {
+                    alert('🐝 Error reading CSV file');
+                };
+                
+                reader.readAsText(file);
+            } catch (error) {
+                console.error('🐝 CSV upload error:', error);
+                alert('🐝 Error uploading CSV file');
+            }
+        }
+
+        // NEW: Process CSV Upload
+        function processCsvUpload() {
+            try {
+                if (competitionData.csvUploadData.length === 0) {
+                    alert('🐝 No CSV data to process');
+                    return;
+                }
+
+                if (competitionData.students.length + competitionData.csvUploadData.length > competitionData.maxStudents) {
+                    const availableSlots = competitionData.maxStudents - competitionData.students.length;
+                    alert(`🐝 Maximum ${competitionData.maxStudents} students allowed. Only ${availableSlots} slots available.`);
+                    return;
+                }
+
+                competitionData.csvUploadData.forEach(data => {
+                    const student = {
+                        id: Date.now() + Math.random(),
+                        name: data.name,
+                        school: data.school,
+                        score: 0,
+                        completed: false,
+                        questionsAttempted: 0,
+                        round: 1,
+                        status: 'active'
+                    };
+                    
+                    competitionData.students.push(student);
+                });
+
+                competitionData.csvUploadData = [];
+                document.getElementById('studentCsvFile').value = '';
+                document.getElementById('csvPreview').innerHTML = '';
+                document.getElementById('csvPreview').style.display = 'none';
+                
+                if (saveData()) {
+                    renderRegisteredStudents();
+                    updateRegistrationStats();
+                    alert(`🐝 Successfully added ${competitionData.students.length} students from CSV!`);
+                }
+            } catch (error) {
+                console.error('🐝 Process CSV error:', error);
+                alert('🐝 Error processing CSV data');
+            }
+        }
+
+        // NEW: Clear CSV Upload
+        function clearCsvUpload() {
+            try {
+                competitionData.csvUploadData = [];
+                document.getElementById('studentCsvFile').value = '';
+                document.getElementById('csvPreview').innerHTML = '';
+                document.getElementById('csvPreview').style.display = 'none';
+                alert('🐝 CSV upload cleared');
+            } catch (error) {
+                console.error('🐝 Clear CSV error:', error);
+            }
+        }
+
+        // NEW: Reserve Words CSV Upload Handler
+        function handleReserveWordsUpload(event) {
+            try {
+                const file = event.target.files[0];
+                if (!file) {
+                    alert('🐝 Please select a CSV file for reserve words');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const csvContent = e.target.result;
+                        const lines = csvContent.split('\n');
+                        competitionData.reserveCsvData = [];
+                        
+                        const previewDiv = document.getElementById('reserveWordsPreview');
+                        previewDiv.innerHTML = '';
+                        previewDiv.style.display = 'block';
+                        
+                        lines.forEach((line, index) => {
+                            const word = line.trim().toLowerCase();
+                            if (word) {
+                                competitionData.reserveCsvData.push(word);
+                                
+                                const previewItem = document.createElement('div');
+                                previewItem.className = 'csv-preview-item';
+                                previewItem.textContent = `${index + 1}. ${word}`;
+                                previewDiv.appendChild(previewItem);
+                            }
+                        });
+                        
+                        if (competitionData.reserveCsvData.length === 0) {
+                            previewDiv.innerHTML = '<div class="csv-preview-item">🐝 No words found in CSV file</div>';
+                        } else {
+                            previewDiv.innerHTML = `<div class="csv-preview-item">🐝 Preview (${competitionData.reserveCsvData.length} words):</div>` + previewDiv.innerHTML;
+                        }
+                        
+                        document.getElementById('reserveWordsCount').textContent = `${competitionData.reserveCsvData.length} words loaded`;
+                        alert(`🐝 Reserve words loaded successfully! ${competitionData.reserveCsvData.length} words found. Enable them when ready.`);
+                    } catch (error) {
+                        console.error('🐝 Reserve CSV parsing error:', error);
+                        alert('🐝 Error parsing reserve words CSV file');
+                    }
+                };
+                
+                reader.onerror = function() {
+                    alert('🐝 Error reading reserve words CSV file');
+                };
+                
+                reader.readAsText(file);
+            } catch (error) {
+                console.error('🐝 Reserve words upload error:', error);
+                alert('🐝 Error uploading reserve words CSV file');
+            }
+        }
+
+        // NEW: Toggle Reserve Words
+        function toggleReserveWords() {
+            try {
+                if (competitionData.reserveWordsEnabled) {
+                    // Disable reserve words
+                    competitionData.reserveWordsEnabled = false;
+                    document.getElementById('toggleReserveWords').textContent = 'Enable Reserve Words';
+                    document.getElementById('toggleReserveWords').classList.remove('active');
+                    alert('🐝 Reserve words disabled');
+                } else {
+                    // Enable reserve words - replace current word list
+                    if (competitionData.reserveCsvData.length === 0) {
+                        alert('🐝 No reserve words loaded. Please upload a CSV file first.');
+                        return;
+                    }
+                    
+                    if (confirm('🐝 This will replace ALL current words with reserve words. Continue?')) {
+                        // Clear current words
+                        competitionData.words = [];
+                        
+                        // Add reserve words
+                        competitionData.reserveCsvData.forEach((word, index) => {
+                            if (index < competitionData.maxWords) {
+                                const wordObj = {
+                                    number: index + 1,
+                                    text: word.toLowerCase(),
+                                    status: "available",
+                                    usedBy: null,
+                                    usedAt: null
+                                };
+                                competitionData.words.push(wordObj);
+                            }
+                        });
+                        
+                        competitionData.reserveWordsEnabled = true;
+                        document.getElementById('toggleReserveWords').textContent = 'Disable Reserve Words';
+                        document.getElementById('toggleReserveWords').classList.add('active');
+                        
+                        if (saveData()) {
+                            renderWordList();
+                            updateRegistrationStats();
+                            alert(`🐝 Reserve words enabled! ${competitionData.words.length} words loaded.`);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('🐝 Toggle reserve words error:', error);
+                alert('🐝 Error toggling reserve words');
+            }
+        }
+
+        // Moving banner functionality
+        function startMovingBanner() {
+            try {
+                const banner = document.getElementById('movingBanner');
+                setInterval(() => {
+                    banner.style.animation = 'none';
+                    setTimeout(() => {
+                        banner.style.animation = 'moveBanner 20s linear infinite';
+                    }, 10);
+                }, 20000);
+            } catch (error) {
+                console.error("🐝 Banner error:", error);
+            }
+        }
+
+        // Show red glowing alarm
+        function showCountdownAlarm() {
+            try {
+                if (!competitionData.alarmActive) {
+                    competitionData.alarmActive = true;
+                    document.getElementById('alarmOverlay').style.display = 'block';
+                    document.getElementById('countdownAlarm').style.display = 'block';
+                    
+                    // Auto hide after 3 seconds
+                    setTimeout(() => {
+                        hideCountdownAlarm();
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error("🐝 Alarm show error:", error);
+            }
+        }
+
+        // Hide red glowing alarm
+        function hideCountdownAlarm() {
+            try {
+                competitionData.alarmActive = false;
+                document.getElementById('alarmOverlay').style.display = 'none';
+                document.getElementById('countdownAlarm').style.display = 'none';
+            } catch (error) {
+                console.error("🐝 Alarm hide error:", error);
+            }
+        }
+
+        // Pause timer function
+        function pauseTimer() {
+            try {
+                if (competitionData.timerInterval) {
+                    clearInterval(competitionData.timerInterval);
+                    competitionData.timerPaused = true;
+                }
+            } catch (error) {
+                console.error("🐝 Timer pause error:", error);
+            }
+        }
+
+        // Resume timer function
+        function resumeTimer() {
+            try {
+                if (competitionData.timerPaused && competitionData.timeRemaining > 0) {
+                    startTimer();
+                    competitionData.timerPaused = false;
+                }
+            } catch (error) {
+                console.error("🐝 Timer resume error:", error);
+            }
+        }
+
+        // Load/Save data to localStorage
+        function loadData() {
+            try {
+                const saved = localStorage.getItem('spellingBeeData');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    competitionData = { ...competitionData, ...data };
+                    
+                    // Store original students for final results
+                    if (!competitionData.originalStudents || competitionData.originalStudents.length === 0) {
+                        competitionData.originalStudents = JSON.parse(JSON.stringify(competitionData.students));
+                    }
+                    
+                    // If competition was already started, show competition section
+                    if (competitionData.competitionStarted && !competitionData.competitionCompleted) {
+                        document.getElementById('registrationSection').classList.add('hidden');
+                        document.getElementById('competitionSection').classList.remove('hidden');
+                        initializeCompetition();
+                    } else if (competitionData.competitionCompleted) {
+                        showFinalResults();
+                    }
+                }
+                updateRegistrationStats();
+                renderRegisteredStudents();
+                renderWordList();
+                
+                // Update round settings display
+                document.getElementById('totalRoundsInput').value = competitionData.totalRounds;
+                document.getElementById('totalRoundsDisplay').textContent = formatNumber(competitionData.totalRounds);
+                document.getElementById('totalRounds').textContent = competitionData.totalRounds;
+                
+            } catch (error) {
+                console.error('🐝 Error loading data:', error);
+                alert('🐝 Error loading competition data. Starting fresh.');
+                competitionData = {
+                    ...competitionData,
+                    students: [],
+                    words: [],
+                    currentRound: 1,
+                    competitionStarted: false,
+                    competitionCompleted: false,
+                    originalStudents: []
+                };
+                saveData();
+            }
+        }
+
+        function saveData() {
+            try {
+                localStorage.setItem('spellingBeeData', JSON.stringify(competitionData));
+                return true;
+            } catch (error) {
+                console.error('🐝 Error saving data:', error);
+                alert('🐝 Error saving competition data. Please check storage availability.');
+                return false;
+            }
+        }
+
+        function setupEventListeners() {
+            try {
+                document.getElementById('studentSearch')?.addEventListener('input', handleStudentSearch);
+                document.getElementById('studentSchool').addEventListener('change', function() {
+                    document.getElementById('otherSchoolGroup').style.display = 
+                        this.value === 'OTHER' ? 'block' : 'none';
+                });
+
+                // Additional keyboard shortcuts
+                document.addEventListener('keydown', function(e) {
+                    // Ctrl+Enter for next student
+                    if (e.ctrlKey && e.key === 'Enter') {
+                        if (!document.getElementById('nextStudentBtn').classList.contains('hidden')) {
+                            nextStudent();
+                        }
+                    }
+                    // Alt+Enter for next round
+                    if (e.altKey && e.key === 'Enter') {
+                        if (!document.getElementById('nextRoundBtn').classList.contains('hidden')) {
+                            nextRound();
+                        }
+                    }
+                    // Escape to close sections
+                    if (e.key === 'Escape') {
+                        closeAllSections();
+                    }
+                });
+
+                initializeColumnStates();
+
+            } catch (error) {
+                console.error("🐝 Event listener setup error:", error);
+            }
+        }
+
+        // Initialize column visibility states
+        function initializeColumnStates() {
+            try {
+                document.getElementById('currentWordSection').style.display = 'block';
+                document.getElementById('spellingSection').style.display = 'block';
+            } catch (error) {
+                console.error("🐝 Column state initialization error:", error);
+            }
+        }
+
+        // Toggle word display section
+        function toggleWordDisplaySection() {
+            try {
+                const section = document.getElementById('currentWordSection');
+                if (section.style.display === 'none') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            } catch (error) {
+                console.error("🐝 Toggle word display error:", error);
+            }
+        }
+
+        // Toggle spelling input section
+        function toggleSpellingInputSection() {
+            try {
+                const section = document.getElementById('spellingSection');
+                if (section.style.display === 'none') {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            } catch (error) {
+                console.error("🐝 Toggle spelling input error:", error);
+            }
+        }
+
+        // Close all sections
+        function closeAllSections() {
+            try {
+                document.getElementById('currentWordSection').style.display = 'none';
+                document.getElementById('spellingSection').style.display = 'none';
+            } catch (error) {
+                console.error("🐝 Close sections error:", error);
+            }
+        }
+
+        // REGISTRATION FUNCTIONS
+        function renderRegistrationPanel() {
+            try {
+                updateRegistrationStats();
+                renderRegisteredStudents();
+                renderWordList();
+            } catch (error) {
+                console.error("🐝 Render registration panel error:", error);
+            }
+        }
+
+        function updateRegistrationStats() {
+            try {
+                document.getElementById('studentsCount').textContent = competitionData.students.length;
+                document.getElementById('wordsCount').textContent = competitionData.words.length;
+                document.getElementById('timerValue').textContent = competitionData.spellingTime;
+                
+                const startBtn = document.getElementById('startCompetitionBtn');
+                if (competitionData.students.length > 0 && competitionData.words.length >= 10) {
+                    startBtn.disabled = false;
+                    document.getElementById('registrationStatus').textContent = 'Ready to Start';
+                    document.getElementById('registrationStatus').style.color = '#ffeb3b';
+                } else {
+                    startBtn.disabled = true;
+                    document.getElementById('registrationStatus').textContent = 'Need more data';
+                    document.getElementById('registrationStatus').style.color = '#ff9800';
+                }
+                
+                // Update reserve words count
+                const reserveCount = competitionData.reserveWordsEnabled ? 'Enabled' : 'Disabled';
+                const reserveWordsDisplay = competitionData.reserveCsvData.length > 0 ? 
+                    `${competitionData.reserveCsvData.length} words loaded (${reserveCount})` : 'No reserve words';
+                document.getElementById('reserveWordsCount').textContent = reserveWordsDisplay;
+                
+            } catch (error) {
+                console.error('🐝 Error updating registration stats:', error);
+            }
+        }
+
+        function addStudent() {
+            try {
+                const name = document.getElementById('studentName').value.trim();
+                const schoolSelect = document.getElementById('studentSchool');
+                const school = schoolSelect.value;
+                const otherSchool = document.getElementById('otherSchool').value.trim();
+
+                if (!name) {
+                    alert('🐝 Please enter student name');
+                    document.getElementById('studentName').focus();
+                    return;
+                }
+
+                if (!school) {
+                    alert('🐝 Please select a school');
+                    schoolSelect.focus();
+                    return;
+                }
+
+                if (competitionData.students.length >= competitionData.maxStudents) {
+                    alert(`🐝 Maximum ${competitionData.maxStudents} students allowed`);
+                    return;
+                }
+
+                const finalSchool = school === 'OTHER' ? otherSchool : school;
+
+                const student = {
+                    id: Date.now(),
+                    name: name,
+                    school: finalSchool,
+                    score: 0,
+                    completed: false,
+                    questionsAttempted: 0,
+                    round: 1,
+                    status: 'active'
+                };
+
+                competitionData.students.push(student);
+                
+                // Clear form and focus back to name input
+                document.getElementById('studentName').value = '';
+                schoolSelect.value = '';
+                document.getElementById('otherSchool').value = '';
+                document.getElementById('otherSchoolGroup').style.display = 'none';
+                document.getElementById('studentName').focus();
+
+                if (saveData()) {
+                    renderRegisteredStudents();
+                    updateRegistrationStats();
+                }
+            } catch (error) {
+                console.error('🐝 Error adding student:', error);
+                alert('🐝 Error adding student. Please try again.');
+            }
+        }
+
+        function renderRegisteredStudents() {
+            try {
+                const container = document.getElementById('registeredStudents');
+                container.innerHTML = '';
+
+                if (competitionData.students.length === 0) {
+                    container.innerHTML = '<div class="student-item">🐝 No students registered yet</div>';
+                    return;
+                }
+
+                competitionData.students.forEach((student, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'student-item';
+                    div.innerHTML = `
+                        <div class="student-info">
+                            <strong>${index + 1}. ${student.name}</strong>
+                            <div>${student.school}</div>
+                        </div>
+                        <div class="student-actions">
+                            <button class="edit-btn" onclick="editStudent(${index})" onkeypress="handleEnterKey(event, 'editStudent')">Edit</button>
+                            <button class="delete-btn" onclick="deleteStudent(${index})" onkeypress="handleEnterKey(event, 'deleteStudent')">Delete</button>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error('🐝 Error rendering registered students:', error);
+            }
+        }
+
+        function editStudent(index) {
+            try {
+                const student = competitionData.students[index];
+                document.getElementById('studentName').value = student.name;
+                
+                const isCustomSchool = !competitionData.schools.includes(student.school);
+                const schoolSelect = document.getElementById('studentSchool');
+                schoolSelect.value = isCustomSchool ? 'OTHER' : student.school;
+                
+                if (isCustomSchool) {
+                    document.getElementById('otherSchoolGroup').style.display = 'block';
+                    document.getElementById('otherSchool').value = student.school;
+                }
+
+                competitionData.students.splice(index, 1);
+                renderRegisteredStudents();
+                updateRegistrationStats();
+                
+                document.getElementById('studentName').focus();
+            } catch (error) {
+                console.error('🐝 Error editing student:', error);
+                alert('🐝 Error editing student. Please try again.');
+            }
+        }
+
+        function deleteStudent(index) {
+            if (confirm('🐝 Are you sure you want to delete this student?')) {
+                try {
+                    competitionData.students.splice(index, 1);
+                    if (saveData()) {
+                        renderRegisteredStudents();
+                        updateRegistrationStats();
+                    }
+                } catch (error) {
+                    console.error('🐝 Error deleting student:', error);
+                    alert('🐝 Error deleting student. Please try again.');
+                }
+            }
+        }
+
+        function addWord() {
+            try {
+                const wordInput = document.getElementById('newWord');
+                const word = wordInput.value.trim().toLowerCase();
+
+                if (!word) {
+                    alert('🐝 Please enter a word');
+                    wordInput.focus();
+                    return;
+                }
+
+                if (competitionData.words.length >= competitionData.maxWords) {
+                    alert(`🐝 Maximum ${competitionData.maxWords} words allowed`);
+                    return;
+                }
+
+                if (competitionData.words.some(w => w.text === word)) {
+                    alert('🐝 This word already exists');
+                    return;
+                }
+
+                const wordObj = {
+                    number: competitionData.words.length + 1,
+                    text: word,
+                    status: "available",
+                    usedBy: null,
+                    usedAt: null
+                };
+
+                competitionData.words.push(wordObj);
+                wordInput.value = '';
+                wordInput.focus();
+
+                if (saveData()) {
+                    renderWordList();
+                    updateRegistrationStats();
+                }
+            } catch (error) {
+                console.error('🐝 Error adding word:', error);
+                alert('🐝 Error adding word. Please try again.');
+            }
+        }
+
+        function renderWordList() {
+            try {
+                const container = document.getElementById('wordList');
+                container.innerHTML = '';
+
+                if (competitionData.words.length === 0) {
+                    container.innerHTML = '<div>🐝 No words added yet</div>';
+                    return;
+                }
+
+                competitionData.words.forEach((word, index) => {
+                    const div = document.createElement('div');
+                    div.style.padding = '4px';
+                    div.style.borderBottom = '1px solid #444';
+                    div.innerHTML = `
+                        ${formatNumber(index + 1)}. ${word.text} 
+                        <button class="delete-btn" style="padding: 2px 6px; font-size: 0.8rem;" 
+                                onclick="deleteWord(${index})" onkeypress="handleEnterKey(event, 'deleteWord')">Delete</button>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error('🐝 Error rendering word list:', error);
+            }
+        }
+
+        function deleteWord(index) {
+            if (confirm('🐝 Are you sure you want to delete this word?')) {
+                try {
+                    competitionData.words.splice(index, 1);
+                    competitionData.words.forEach((word, i) => {
+                        word.number = i + 1;
+                    });
+                    if (saveData()) {
+                        renderWordList();
+                        updateRegistrationStats();
+                    }
+                } catch (error) {
+                    console.error('🐝 Error deleting word:', error);
+                    alert('🐝 Error deleting word. Please try again.');
+                }
+            }
+        }
+
+        // Update total rounds function
+        function updateTotalRounds() {
+            try {
+                const roundsInput = document.getElementById('totalRoundsInput');
+                const rounds = parseInt(roundsInput.value);
+
+                if (rounds < 1 || rounds > 10) {
+                    alert('🐝 Please enter a number between 1 and 10');
+                    roundsInput.focus();
+                    return;
+                }
+
+                competitionData.totalRounds = rounds;
+                document.getElementById('totalRoundsDisplay').textContent = formatNumber(rounds);
+                document.getElementById('totalRounds').textContent = rounds;
+                saveData();
+                
+                alert(`🐝 Total rounds updated to ${rounds}`);
+                roundsInput.focus();
+            } catch (error) {
+                console.error('🐝 Error updating rounds:', error);
+                alert('🐝 Error updating rounds. Please try again.');
+            }
+        }
+
+        function updateTimer() {
+            try {
+                const timeInput = document.getElementById('spellingTime');
+                const time = parseInt(timeInput.value);
+
+                if (time < 10 || time > 300) {
+                    alert('🐝 Please enter a time between 10 and 300 seconds');
+                    timeInput.focus();
+                    return;
+                }
+
+                competitionData.spellingTime = time;
+                document.getElementById('timerValue').textContent = time;
+                saveData();
+                
+                alert(`🐝 Timer updated to ${time} seconds`);
+                timeInput.focus();
+            } catch (error) {
+                console.error('🐝 Error updating timer:', error);
+                alert('🐝 Error updating timer. Please try again.');
+            }
+        }
+
+        function startCompetition() {
+            try {
+                if (competitionData.students.length === 0) {
+                    alert('🐝 Please register at least one student');
+                    return;
+                }
+
+                if (competitionData.words.length < 10) {
+                    alert('🐝 Please add at least 10 words');
+                    return;
+                }
+
+                document.getElementById('registrationSection').classList.add('hidden');
+                document.getElementById('competitionSection').classList.remove('hidden');
+
+                competitionData.competitionStarted = true;
+                competitionData.competitionCompleted = false;
+                competitionData.originalStudents = JSON.parse(JSON.stringify(competitionData.students));
+                
+                if (saveData()) {
+                    initializeCompetition();
+                }
+            } catch (error) {
+                console.error('🐝 Error starting competition:', error);
+                alert('🐝 Error starting competition. Please try again.');
+            }
+        }
+
+        function initializeCompetition() {
+            try {
+                competitionData.currentRound = 1;
+                competitionData.currentStudentIndex = 0;
+                competitionData.currentQuestionNumber = 0;
+                competitionData.studentRemovalEnabled = false;
+                competitionData.wordManagementEnabled = false;
+                competitionData.timerPaused = false;
+                
+                document.getElementById('totalStudents').textContent = formatNumber(competitionData.students.length);
+                document.getElementById('totalStudentsCount').textContent = formatNumber(competitionData.students.length);
+                document.getElementById('totalRoundsDisplay').textContent = formatNumber(competitionData.totalRounds);
+                document.getElementById('totalRounds').textContent = competitionData.totalRounds;
+                
+                setCurrentStudent();
+                
+                document.getElementById('currentWordSection').style.display = 'block';
+                document.getElementById('spellingSection').style.display = 'block';
+                
+            } catch (error) {
+                console.error('🐝 Error initializing competition:', error);
+            }
+        }
+
+        // ALL ORIGINAL COMPETITION FUNCTIONS PRESERVED
+        function formatNumber(num) {
+            return num.toString().padStart(2, '0');
+        }
+
+        function setCurrentStudent() {
+            try {
+                if (competitionData.currentStudentIndex < competitionData.students.length) {
+                    const student = competitionData.students[competitionData.currentStudentIndex];
+                    competitionData.currentStudentId = student.id;
+                    updateCurrentStudentDisplay();
+                    updateRoundDisplay();
+                    updateStudentProfileBoard(student);
+                    
+                    document.getElementById('spellingSection').classList.add('hidden');
+                    document.getElementById('currentWordSection').classList.add('hidden');
+                    document.getElementById('resultsSection').classList.add('hidden');
+                    document.getElementById('spellingInput').value = '';
+                    document.getElementById('wordDisplay').classList.add('hidden');
+                    document.getElementById('showSpellingBtn').textContent = '🔒 Show Spelling';
+                    competitionData.isWordVisible = false;
+                    competitionData.isWordPasswordVisible = false;
+                    competitionData.timerPaused = false;
+                    
+                    document.getElementById('resultsSection').classList.remove('hidden');
+                    document.getElementById('resultMessage').innerHTML = 
+                        `<div class="correct">🐝 Round ${formatNumber(competitionData.currentRound)}: ${student.name}</div>
+                         <p>🐝 Please select a word for this student</p>`;
+                    document.getElementById('nextStudentBtn').classList.remove('hidden');
+                    document.getElementById('nextRoundBtn').classList.add('hidden');
+                    document.getElementById('retryBtn').classList.add('hidden');
+                    
+                    // Focus the word search input
+                    setTimeout(() => {
+                        document.getElementById('wordSearch').focus();
+                    }, 100);
+                } else {
+                    showRoundCompletion();
+                }
+            } catch (error) {
+                console.error('🐝 Error setting current student:', error);
+            }
+        }
+
+        function updateStudentProfileBoard(student) {
+            try {
+                document.getElementById('profileStudentName').textContent = student.name;
+                document.getElementById('profileStudentSchool').textContent = student.school;
+                document.getElementById('profileStudentScore').textContent = student.score || 0;
+                document.getElementById('profileQuestionsCompleted').textContent = `${student.questionsAttempted || 0}/10`;
+                document.getElementById('profileCurrentRound').textContent = competitionData.currentRound;
+                
+                let status = 'Waiting';
+                if (student.questionsAttempted >= 10) {
+                    status = 'Completed';
+                } else if (student.id === competitionData.currentStudentId) {
+                    status = 'Current Participant';
+                } else if (student.questionsAttempted > 0) {
+                    status = 'In Progress';
+                }
+                document.getElementById('profileStudentStatus').textContent = status;
+                
+            } catch (error) {
+                console.error('🐝 Error updating student profile board:', error);
+            }
+        }
+
+        function showRoundCompletion() {
+            try {
+                document.getElementById('resultsSection').classList.remove('hidden');
+                document.getElementById('resultMessage').innerHTML = 
+                    `<div class="correct">🎉 Round ${formatNumber(competitionData.currentRound)} Completed!</div>
+                     <p>🐝 All students have completed this round.</p>`;
+                document.getElementById('nextStudentBtn').classList.add('hidden');
+                document.getElementById('nextRoundBtn').classList.remove('hidden');
+                
+                document.getElementById('removalRoundNumber').textContent = competitionData.currentRound;
+                document.getElementById('studentRemovalPanel').style.display = 'block';
+                document.getElementById('expelledStudents').style.display = 'none';
+                
+                document.getElementById('wordManagementRoundNumber').textContent = competitionData.currentRound;
+                document.getElementById('wordManagementPanel').style.display = 'block';
+                
+                // Focus the enable removal button
+                setTimeout(() => {
+                    document.getElementById('enableRemovalBtn').focus();
+                }, 100);
+                
+            } catch (error) {
+                console.error('🐝 Error showing round completion:', error);
+            }
+        }
+
+        function enableStudentRemoval() {
+            try {
+                competitionData.studentRemovalEnabled = true;
+                document.getElementById('studentRemovalPanel').innerHTML = `
+                    <h4>🐝 Student Removal Active</h4>
+                    <p>🐝 Click on any student to remove them from the competition.</p>
+                    <p><strong>🐝 Removed Students:</strong></p>
+                    <div id="expelledStudents" class="expelled-students" style="display: block;"></div>
+                    <div class="removal-controls">
+                        <button class="verify-btn" onclick="finalizeStudentRemoval()" id="finalizeRemovalBtn" onkeypress="handleEnterKey(event, 'finalizeStudentRemoval')">Done - Finalize Removal</button>
+                        <button class="retry-btn" onclick="cancelStudentRemoval()" onkeypress="handleEnterKey(event, 'cancelStudentRemoval')">Cancel Removal</button>
+                    </div>
+                `;
+                
+                renderSchools();
+                setTimeout(() => {
+                    document.getElementById('finalizeRemovalBtn').focus();
+                }, 100);
+            } catch (error) {
+                console.error('🐝 Error enabling student removal:', error);
+            }
+        }
+
+        function enableWordManagement() {
+            try {
+                competitionData.wordManagementEnabled = true;
+                document.getElementById('wordManagementArea').style.display = 'block';
+                renderCompetitionWordList();
+                document.getElementById('newWordRound').focus();
+            } catch (error) {
+                console.error('🐝 Error enabling word management:', error);
+            }
+        }
+
+        function skipWordManagement() {
+            try {
+                competitionData.wordManagementEnabled = false;
+                document.getElementById('wordManagementArea').style.display = 'none';
+                document.getElementById('skipWordMgmtBtn').focus();
+            } catch (error) {
+                console.error('🐝 Error skipping word management:', error);
+            }
+        }
+
+        function addWordDuringCompetition() {
+            try {
+                const wordInput = document.getElementById('newWordRound');
+                const word = wordInput.value.trim().toLowerCase();
+
+                if (!word) {
+                    alert('🐝 Please enter a word');
+                    wordInput.focus();
+                    return;
+                }
+
+                if (competitionData.words.length >= competitionData.maxWords) {
+                    alert(`🐝 Maximum ${competitionData.maxWords} words allowed`);
+                    return;
+                }
+
+                if (competitionData.words.some(w => w.text === word)) {
+                    alert('🐝 This word already exists');
+                    return;
+                }
+
+                const wordObj = {
+                    number: competitionData.words.length + 1,
+                    text: word,
+                    status: "available",
+                    usedBy: null,
+                    usedAt: null
+                };
+
+                competitionData.words.push(wordObj);
+                wordInput.value = '';
+
+                if (saveData()) {
+                    renderCompetitionWordList();
+                    wordInput.focus();
+                    alert('🐝 Word added successfully!');
+                }
+            } catch (error) {
+                console.error('🐝 Error adding word during competition:', error);
+                alert('🐝 Error adding word. Please try again.');
+            }
+        }
+
+        function renderCompetitionWordList() {
+            try {
+                const container = document.getElementById('competitionWordList');
+                container.innerHTML = '';
+
+                if (competitionData.words.length === 0) {
+                    container.innerHTML = '<div>🐝 No words available</div>';
+                    return;
+                }
+
+                competitionData.words.forEach((word, index) => {
+                    const div = document.createElement('div');
+                    div.style.padding = '6px';
+                    div.style.borderBottom = '1px solid #333';
+                    div.style.display = 'flex';
+                    div.style.justifyContent = 'space-between';
+                    div.style.alignItems = 'center';
+                    
+                    const wordInfo = document.createElement('span');
+                    wordInfo.textContent = `${formatNumber(word.number)}. ${word.text} (${word.status})`;
+                    wordInfo.style.color = '#ffeb3b';
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = 'Delete';
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.style.padding = '2px 6px';
+                    deleteBtn.style.fontSize = '0.8rem';
+                    deleteBtn.onclick = () => deleteWordDuringCompetition(index);
+                    
+                    div.appendChild(wordInfo);
+                    div.appendChild(deleteBtn);
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error('🐝 Error rendering competition word list:', error);
+            }
+        }
+
+        function deleteWordDuringCompetition(index) {
+            if (confirm('🐝 Are you sure you want to delete this word?')) {
+                try {
+                    competitionData.words.splice(index, 1);
+                    competitionData.words.forEach((word, i) => {
+                        word.number = i + 1;
+                    });
+                    if (saveData()) {
+                        renderCompetitionWordList();
+                        alert('🐝 Word deleted successfully!');
+                    }
+                } catch (error) {
+                    console.error('🐝 Error deleting word during competition:', error);
+                    alert('🐝 Error deleting word. Please try again.');
+                }
+            }
+        }
+
+        function skipStudentRemoval() {
+            try {
+                competitionData.studentRemovalEnabled = false;
+                document.getElementById('studentRemovalPanel').style.display = 'none';
+                document.getElementById('nextRoundBtn').classList.remove('hidden');
+                document.getElementById('nextRoundBtn').focus();
+            } catch (error) {
+                console.error('🐝 Error skipping student removal:', error);
+            }
+        }
+
+        function finalizeStudentRemoval() {
+            try {
+                if (competitionData.expelledStudents.length > 0) {
+                    const confirmMessage = `🐝 You are about to remove ${competitionData.expelledStudents.length} student(s) from the competition.\n\nRemoved students:\n${competitionData.expelledStudents.map(s => `• ${s.name} (${s.school})`).join('\n')}\n\nThis action cannot be undone. Continue?`;
+                    
+                    if (confirm(confirmMessage)) {
+                        competitionData.expelledStudents.forEach(expelledStudent => {
+                            const index = competitionData.students.findIndex(s => s.id === expelledStudent.id);
+                            if (index !== -1) {
+                                competitionData.students.splice(index, 1);
+                            }
+                        });
+                        
+                        competitionData.expelledStudents = [];
+                        competitionData.studentRemovalEnabled = false;
+                        document.getElementById('studentRemovalPanel').style.display = 'none';
+                        
+                        if (competitionData.currentStudentIndex >= competitionData.students.length) {
+                            competitionData.currentStudentIndex = Math.max(0, competitionData.students.length - 1);
+                        }
+                        
+                        if (saveData()) {
+                            renderSchools();
+                            document.getElementById('nextRoundBtn').focus();
+                            alert('🐝 Students removed successfully. Competition continues with remaining participants.');
+                        }
+                    }
+                } else {
+                    competitionData.studentRemovalEnabled = false;
+                    document.getElementById('studentRemovalPanel').style.display = 'none';
+                    document.getElementById('nextRoundBtn').focus();
+                }
+            } catch (error) {
+                console.error('🐝 Error finalizing student removal:', error);
+            }
+        }
+
+        function cancelStudentRemoval() {
+            try {
+                competitionData.expelledStudents.forEach(expelledStudent => {
+                    const existingStudent = competitionData.students.find(s => s.id === expelledStudent.id);
+                    if (!existingStudent) {
+                        competitionData.students.push(expelledStudent);
+                    }
+                });
+                
+                competitionData.expelledStudents = [];
+                competitionData.studentRemovalEnabled = false;
+                document.getElementById('studentRemovalPanel').style.display = 'none';
+                
+                if (saveData()) {
+                    renderSchools();
+                    document.getElementById('nextRoundBtn').focus();
+                    alert('🐝 Student removal cancelled. All students restored.');
+                }
+            } catch (error) {
+                console.error('🐝 Error cancelling student removal:', error);
+            }
+        }
+
+        function updateCurrentStudentDisplay() {
+            try {
+                const student = competitionData.students[competitionData.currentStudentIndex];
+                document.getElementById('currentStudentName').textContent = student.name;
+                document.getElementById('currentStudentScore').textContent = student.score || 0;
+                document.getElementById('currentStudentPosition').textContent = formatNumber(competitionData.currentStudentIndex + 1);
+                document.getElementById('studentName').textContent = student.name;
+                document.getElementById('studentSchool').textContent = student.school;
+                document.getElementById('studentScore').textContent = student.score || 0;
+                document.getElementById('questionsCompleted').textContent = `${student.questionsAttempted || 0}/10`;
+                
+                renderSchools();
+            } catch (error) {
+                console.error('🐝 Error updating current student display:', error);
+            }
+        }
+
+        function updateRoundDisplay() {
+            try {
+                document.getElementById('currentRoundDisplay').textContent = formatNumber(competitionData.currentRound);
+                const roundProgress = ((competitionData.currentRound - 1) / competitionData.totalRounds) * 100;
+                document.getElementById('roundProgress').style.width = `${Math.max(0, Math.min(100, roundProgress))}%`;
+            } catch (error) {
+                console.error('🐝 Error updating round display:', error);
+            }
+        }
+
+        function nextStudent() {
+            try {
+                competitionData.currentStudentIndex++;
+                if (competitionData.currentStudentIndex < competitionData.students.length) {
+                    setCurrentStudent();
+                } else {
+                    showRoundCompletion();
+                }
+                saveData();
+            } catch (error) {
+                console.error('🐝 Error moving to next student:', error);
+            }
+        }
+
+        function nextRound() {
+            try {
+                if (competitionData.currentRound < competitionData.totalRounds) {
+                    competitionData.currentRound++;
+                    competitionData.currentStudentIndex = 0;
+                    setCurrentStudent();
+                    updateRoundDisplay();
+                    
+                    document.getElementById('studentRemovalPanel').style.display = 'none';
+                    document.getElementById('wordManagementPanel').style.display = 'none';
+                    document.getElementById('wordManagementArea').style.display = 'none';
+                } else {
+                    showFinalResults();
+                }
+                saveData();
+            } catch (error) {
+                console.error('🐝 Error moving to next round:', error);
+            }
+        }
+
+        function showFinalResults() {
+            try {
+                competitionData.competitionCompleted = true;
+                document.getElementById('competitionSection').classList.add('hidden');
+                document.getElementById('finalResultsSection').classList.remove('hidden');
+                
+                document.getElementById('finalTotalParticipants').textContent = competitionData.originalStudents.length;
+                document.getElementById('finalTotalRounds').textContent = competitionData.totalRounds;
+                document.getElementById('finalCompetitionDate').textContent = new Date().toLocaleDateString();
+                
+                const topScore = Math.max(...competitionData.originalStudents.map(s => s.score || 0));
+                document.getElementById('finalTopScore').textContent = topScore;
+                
+                renderFinalResultsTable();
+                
+                if (saveData()) {
+                    console.log("🐝 Final results displayed successfully");
+                    document.querySelector('.verify-btn').focus();
+                }
+            } catch (error) {
+                console.error('🐝 Error showing final results:', error);
+            }
+        }
+
+        function renderFinalResultsTable() {
+            try {
+                const tableBody = document.getElementById('finalResultsTable');
+                tableBody.innerHTML = '';
+
+                const allStudents = [...competitionData.originalStudents];
+                allStudents.sort((a, b) => (b.score || 0) - (a.score || 0));
+                
+                allStudents.forEach((student, index) => {
+                    const row = document.createElement('tr');
+                    
+                    const isExpelled = competitionData.expelledStudents.some(s => s.id === student.id);
+                    const isActive = competitionData.students.some(s => s.id === student.id);
+                    
+                    let achievement = 'Participant';
+                    let medal = '';
+                    
+                    if (index === 0 && !isExpelled) {
+                        achievement = 'Champion';
+                        medal = '🥇';
+                    } else if (index === 1 && !isExpelled) {
+                        achievement = 'First Runner-up';
+                        medal = '🥈';
+                    } else if (index === 2 && !isExpelled) {
+                        achievement = 'Second Runner-up';
+                        medal = '🥉';
+                    } else if (student.score >= 15 && !isExpelled) {
+                        achievement = 'Excellent';
+                        medal = '⭐';
+                    } else if (student.score >= 10 && !isExpelled) {
+                        achievement = 'Good';
+                        medal = '👍';
+                    } else if (isExpelled) {
+                        achievement = 'Expelled';
+                        medal = '❌';
+                    } else {
+                        achievement = 'Participant';
+                        medal = '🎖️';
+                    }
+                    
+                    row.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${student.name} ${medal}</td>
+                        <td>${student.school}</td>
+                        <td>${student.score || 0}</td>
+                        <td>${student.questionsAttempted || 0}/10</td>
+                        <td>${isExpelled ? 'Expelled' : isActive ? 'Completed' : 'Withdrawn'}</td>
+                        <td>${achievement}</td>
+                    `;
+                    
+                    if (index === 0 && !isExpelled) {
+                        row.style.background = 'linear-gradient(90deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05))';
+                        row.style.fontWeight = 'bold';
+                    } else if (index === 1 && !isExpelled) {
+                        row.style.background = 'linear-gradient(90deg, rgba(192,192,192,0.2), rgba(192,192,192,0.05))';
+                        row.style.fontWeight = 'bold';
+                    } else if (index === 2 && !isExpelled) {
+                        row.style.background = 'linear-gradient(90deg, rgba(205,127,50,0.2), rgba(205,127,50,0.05))';
+                        row.style.fontWeight = 'bold';
+                    } else if (isExpelled) {
+                        row.style.background = 'rgba(255, 87, 34, 0.1)';
+                        row.style.textDecoration = 'line-through';
+                    }
+                    
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('🐝 Error rendering final results table:', error);
+            }
+        }
+
+        function printResults() {
+            try {
+                window.print();
+            } catch (error) {
+                console.error('🐝 Error printing results:', error);
+                alert('🐝 Error printing results. Please try again.');
+            }
+        }
+
+        function restartCompetition() {
+            try {
+                if (confirm('🐝 Are you sure you want to start a new competition? All current data will be reset.')) {
+                    competitionData = {
+                        ...competitionData,
+                        students: [],
+                        words: [],
+                        currentRound: 1,
+                        currentStudentIndex: 0,
+                        competitionStarted: false,
+                        competitionCompleted: false,
+                        expelledStudents: [],
+                        originalStudents: [],
+                        csvUploadData: [],
+                        reserveCsvData: [],
+                        reserveWordsEnabled: false
+                    };
+                    
+                    document.getElementById('finalResultsSection').classList.add('hidden');
+                    document.getElementById('registrationSection').classList.remove('hidden');
+                    
+                    if (saveData()) {
+                        renderRegistrationPanel();
+                        document.getElementById('studentName').focus();
+                        alert('🐝 New competition ready! Please register students and add words.');
+                    }
+                }
+            } catch (error) {
+                console.error('🐝 Error restarting competition:', error);
+            }
+        }
+
+        function backToCompetition() {
+            try {
+                document.getElementById('finalResultsSection').classList.add('hidden');
+                document.getElementById('competitionSection').classList.remove('hidden');
+                document.getElementById('nextRoundBtn').focus();
+            } catch (error) {
+                console.error('🐝 Error going back to competition:', error);
+            }
+        }
+
+        function toggleWordDisplay() {
+            try {
+                const wordDisplay = document.getElementById('wordDisplay');
+                const showSpellingBtn = document.getElementById('showSpellingBtn');
+                
+                if (competitionData.isWordVisible) {
+                    wordDisplay.classList.add('hidden');
+                    showSpellingBtn.textContent = '🔒 Show Spelling';
+                    competitionData.isWordVisible = false;
+                    competitionData.isWordPasswordVisible = false;
+                } else {
+                    if (competitionData.currentWord) {
+                        const formattedWord = competitionData.currentWord.text.toUpperCase().split('').join(' ');
+                        wordDisplay.textContent = formattedWord;
+                        wordDisplay.classList.remove('hidden');
+                        showSpellingBtn.textContent = '🔒 Hide Spelling';
+                        competitionData.isWordVisible = true;
+                        competitionData.isWordPasswordVisible = true;
+                    }
+                }
+            } catch (error) {
+                console.error('🐝 Error toggling word display:', error);
+            }
+        }
+
+        function toggleWordVisibility() {
+            try {
+                if (competitionData.currentWord && competitionData.isWordVisible) {
+                    const wordDisplay = document.getElementById('wordDisplay');
+                    const formattedWord = competitionData.currentWord.text.toUpperCase().split('').join(' ');
+                    wordDisplay.textContent = formattedWord;
+                    competitionData.isWordPasswordVisible = true;
+                }
+            } catch (error) {
+                console.error('🐝 Error toggling word visibility:', error);
+            }
+        }
+
+        function renderSchools() {
+            try {
+                const schoolList = document.getElementById('schoolList');
+                schoolList.innerHTML = '';
+                
+                const schools = {};
+                competitionData.students.forEach(student => {
+                    if (!schools[student.school]) {
+                        schools[student.school] = [];
+                    }
+                    schools[student.school].push(student);
+                });
+                
+                Object.keys(schools).forEach(schoolName => {
+                    const schoolDiv = document.createElement('div');
+                    schoolDiv.className = 'school-item';
+                    
+                    const schoolHeader = document.createElement('div');
+                    schoolHeader.className = 'school-header';
+                    schoolHeader.textContent = schoolName;
+                    schoolDiv.appendChild(schoolHeader);
+                    
+                    schools[schoolName].forEach(student => {
+                        const studentDiv = document.createElement('div');
+                        studentDiv.className = 'student-name';
+                        
+                        const isExpelled = competitionData.expelledStudents.some(s => s.id === student.id);
+                        
+                        if (isExpelled) {
+                            studentDiv.style.background = '#ff5722';
+                            studentDiv.style.color = '#000000';
+                            studentDiv.style.textDecoration = 'line-through';
+                        } else if (student.id === competitionData.currentStudentId) {
+                            studentDiv.classList.add('current-student');
+                        } else if (student.questionsAttempted >= 10) {
+                            studentDiv.classList.add('completed-student');
+                        }
+                        
+                        studentDiv.textContent = `${student.name} (${student.questionsAttempted || 0}/10) - ${student.score}pts`;
+                        
+                        if (competitionData.studentRemovalEnabled && !isExpelled) {
+                            studentDiv.style.cursor = 'pointer';
+                            studentDiv.onclick = () => {
+                                if (confirm(`🐝 Remove ${student.name} from ${student.school} from the competition?`)) {
+                                    competitionData.expelledStudents.push(student);
+                                    renderSchools();
+                                    
+                                    const expelledContainer = document.getElementById('expelledStudents');
+                                    expelledContainer.innerHTML = competitionData.expelledStudents
+                                        .map(s => `<div>❌ ${s.name} (${s.school})</div>`)
+                                        .join('');
+                                }
+                            };
+                        } else {
+                            studentDiv.onclick = () => {
+                                if (competitionData.competitionStarted && student.questionsAttempted < 10 && !isExpelled) {
+                                    competitionData.currentStudentIndex = competitionData.students.findIndex(s => s.id === student.id);
+                                    setCurrentStudent();
+                                }
+                            };
+                        }
+                        
+                        schoolDiv.appendChild(studentDiv);
+                    });
+                    
+                    schoolList.appendChild(schoolDiv);
+                });
+            } catch (error) {
+                console.error('🐝 Error rendering schools:', error);
+            }
+        }
+
+        function handleStudentSearch(e) {
+            try {
+                const searchTerm = e.target.value.toLowerCase();
+                const allSchoolItems = document.querySelectorAll('.school-item');
+                
+                allSchoolItems.forEach(schoolItem => {
+                    let hasMatch = false;
+                    const studentItems = schoolItem.querySelectorAll('.student-name');
+                    
+                    studentItems.forEach(studentItem => {
+                        if (studentItem.textContent.toLowerCase().includes(searchTerm)) {
+                            studentItem.style.display = 'block';
+                            hasMatch = true;
+                        } else {
+                            studentItem.style.display = 'none';
+                        }
+                    });
+                    
+                    schoolItem.style.display = hasMatch ? 'block' : 'none';
+                });
+            } catch (error) {
+                console.error('🐝 Error handling student search:', error);
+            }
+        }
+
+        function searchWord() {
+            try {
+                const searchTerm = document.getElementById('wordSearch').value;
+                const resultsDiv = document.getElementById('wordSearchResults');
+                
+                if (searchTerm.length > 0) {
+                    const filteredWords = competitionData.words.filter(word => 
+                        word.number.toString().includes(searchTerm)
+                    );
+                    
+                    resultsDiv.innerHTML = '';
+                    
+                    if (filteredWords.length === 0) {
+                        const div = document.createElement('div');
+                        div.className = 'word-result';
+                        div.textContent = '🐝 No words found with that number';
+                        resultsDiv.appendChild(div);
+                    } else {
+                        filteredWords.forEach(word => {
+                            const div = document.createElement('div');
+                            div.className = 'word-result';
+                            
+                            const wordInfo = document.createElement('span');
+                            wordInfo.textContent = `#${formatNumber(word.number)}: [Hidden]`;
+                            
+                            const statusSpan = document.createElement('span');
+                            statusSpan.className = 'word-status';
+                            
+                            if (word.status === "used") {
+                                statusSpan.classList.add('word-used');
+                                statusSpan.textContent = 'Used';
+                            } else if (word.status === "expired") {
+                                statusSpan.classList.add('word-expired');
+                                statusSpan.textContent = 'Expired';
+                            } else {
+                                statusSpan.textContent = 'Available';
+                            }
+                            
+                            div.appendChild(wordInfo);
+                            div.appendChild(statusSpan);
+                            
+                            if (word.status === "available") {
+                                div.onclick = () => selectWord(word);
+                                div.tabIndex = 0;
+                                div.onkeypress = (e) => {
+                                    if (e.key === 'Enter') {
+                                        selectWord(word);
+                                    }
+                                };
+                            }
+                            
+                            resultsDiv.appendChild(div);
+                        });
+                    }
+                    
+                    resultsDiv.style.display = 'block';
+                } else {
+                    resultsDiv.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('🐝 Error searching word:', error);
+            }
+        }
+
+        function selectWord(word) {
+            try {
+                if (competitionData.timerInterval) {
+                    clearInterval(competitionData.timerInterval);
+                }
+                
+                document.getElementById('currentWordSection').classList.remove('hidden');
+                document.getElementById('spellingSection').classList.remove('hidden');
+                document.getElementById('resultsSection').classList.add('hidden');
+                document.getElementById('wordDisplay').classList.add('hidden');
+                document.getElementById('showSpellingBtn').textContent = '🔒 Show Spelling';
+                competitionData.isWordVisible = false;
+                competitionData.isWordPasswordVisible = false;
+                competitionData.timerPaused = false;
+                
+                document.getElementById('currentWordNumber').textContent = formatNumber(word.number);
+                document.getElementById('wordSearchResults').style.display = 'none';
+                document.getElementById('wordSearch').value = '';
+                
+                competitionData.timeRemaining = competitionData.spellingTime;
+                updateTimerDisplay();
+                startTimer();
+                
+                document.getElementById('verifyBtn').disabled = false;
+                competitionData.currentWord = word;
+                
+                // Focus spelling input
+                setTimeout(() => {
+                    document.getElementById('spellingInput').focus();
+                }, 100);
+            } catch (error) {
+                console.error('🐝 Error selecting word:', error);
+            }
+        }
+
+        function startTimer() {
+            try {
+                competitionData.timerInterval = setInterval(() => {
+                    if (!competitionData.timerPaused) {
+                        competitionData.timeRemaining--;
+                        updateTimerDisplay();
+                        
+                        if (competitionData.timeRemaining === 10) {
+                            showCountdownAlarm();
+                        }
+                        
+                        if (competitionData.timeRemaining <= 0) {
+                            wordExpired();
+                        } else if (competitionData.timeRemaining <= 10) {
+                            document.getElementById('wordTimer').classList.add('timer-warning');
+                        }
+                    }
+                }, 1000);
+            } catch (error) {
+                console.error('🐝 Error starting timer:', error);
+            }
+        }
+
+        function updateTimerDisplay() {
+            try {
+                const timerElement = document.getElementById('wordTimer');
+                const minutes = Math.floor(competitionData.timeRemaining / 60);
+                const seconds = competitionData.timeRemaining % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } catch (error) {
+                console.error('🐝 Error updating timer display:', error);
+            }
+        }
+
+        function wordExpired() {
+            try {
+                clearInterval(competitionData.timerInterval);
+                hideCountdownAlarm();
+                
+                const wordIndex = competitionData.words.findIndex(w => w.number === competitionData.currentWord.number);
+                if (wordIndex !== -1) {
+                    competitionData.words[wordIndex].status = "expired";
+                }
+                
+                const student = competitionData.students.find(s => s.id === competitionData.currentStudentId);
+                student.questionsAttempted = (student.questionsAttempted || 0) + 1;
+                
+                document.getElementById('resultsSection').classList.remove('hidden');
+                document.getElementById('resultMessage').innerHTML = '<div class="expired">⏰ Time expired! Word removed from list.</div>';
+                document.getElementById('retryBtn').classList.add('hidden');
+                
+                document.getElementById('nextStudentBtn').classList.remove('hidden');
+                document.getElementById('nextRoundBtn').classList.add('hidden');
+                
+                document.getElementById('verifyBtn').disabled = true;
+                
+                saveData();
+                updateWordsRemaining();
+                updateCurrentStudentDisplay();
+                updateLeaderboard();
+                
+                setTimeout(() => {
+                    document.getElementById('nextStudentBtn').focus();
+                }, 100);
+            } catch (error) {
+                console.error('🐝 Error handling word expiration:', error);
+            }
+        }
+
+        function checkSpelling() {
+            try {
+                pauseTimer();
+                hideCountdownAlarm();
+                
+                const studentSpelling = document.getElementById('spellingInput').value.toLowerCase();
+                const correctSpelling = competitionData.currentWord.text.toLowerCase();
+                const student = competitionData.students.find(s => s.id === competitionData.currentStudentId);
+                
+                const formattedStudentSpelling = studentSpelling.replace(/\s+/g, '');
+                
+                document.getElementById('resultsSection').classList.remove('hidden');
+                
+                if (formattedStudentSpelling === correctSpelling) {
+                    updateStudentScore(student.id, 2);
+                    document.getElementById('resultMessage').innerHTML = '<div class="correct">✓ Correct! +2 points</div>';
+                    document.getElementById('retryBtn').classList.add('hidden');
+                    competitionData.hasRetry = false;
+                    
+                    markWordAsUsed();
+                } else {
+                    document.getElementById('resultMessage').innerHTML = '<div class="incorrect">✗ Incorrect! Try again</div>';
+                    document.getElementById('retryBtn').classList.remove('hidden');
+                    document.getElementById('nextStudentBtn').classList.add('hidden');
+                    document.getElementById('nextRoundBtn').classList.add('hidden');
+                    competitionData.hasRetry = true;
+                    
+                    setTimeout(() => {
+                        document.getElementById('retryBtn').focus();
+                    }, 100);
+                    
+                    resumeTimer();
+                    return;
+                }
+                
+                student.questionsAttempted = (student.questionsAttempted || 0) + 1;
+                
+                document.getElementById('nextStudentBtn').classList.remove('hidden');
+                document.getElementById('nextRoundBtn').classList.add('hidden');
+                
+                updateCurrentStudentDisplay();
+                updateLeaderboard();
+                
+                setTimeout(() => {
+                    document.getElementById('nextStudentBtn').focus();
+                }, 100);
+            } catch (error) {
+                console.error('🐝 Error checking spelling:', error);
+            }
+        }
+
+        function retrySpelling() {
+            try {
+                const studentSpelling = document.getElementById('spellingInput').value.toLowerCase();
+                const correctSpelling = competitionData.currentWord.text.toLowerCase();
+                const student = competitionData.students.find(s => s.id === competitionData.currentStudentId);
+                
+                const formattedStudentSpelling = studentSpelling.replace(/\s+/g, '');
+                
+                if (formattedStudentSpelling === correctSpelling) {
+                    updateStudentScore(student.id, 1);
+                    document.getElementById('resultMessage').innerHTML = '<div class="correct">✓ Correct on second try! +1 point</div>';
+                } else {
+                    document.getElementById('resultMessage').innerHTML = '<div class="incorrect">✗ Incorrect again! 0 points</div>';
+                }
+                
+                markWordAsUsed();
+                
+                student.questionsAttempted = (student.questionsAttempted || 0) + 1;
+                
+                document.getElementById('retryBtn').classList.add('hidden');
+                competitionData.hasRetry = false;
+                
+                document.getElementById('nextStudentBtn').classList.remove('hidden');
+                document.getElementById('nextRoundBtn').classList.add('hidden');
+                
+                updateCurrentStudentDisplay();
+                updateLeaderboard();
+                
+                setTimeout(() => {
+                    document.getElementById('nextStudentBtn').focus();
+                }, 100);
+            } catch (error) {
+                console.error('🐝 Error in retry spelling:', error);
+            }
+        }
+
+        function markWordAsUsed() {
+            try {
+                const wordIndex = competitionData.words.findIndex(w => w.number === competitionData.currentWord.number);
+                if (wordIndex !== -1) {
+                    competitionData.words[wordIndex].status = "used";
+                    competitionData.words[wordIndex].usedBy = competitionData.currentStudentId;
+                    competitionData.words[wordIndex].usedAt = new Date().toISOString();
+                }
+                
+                saveData();
+                updateWordsRemaining();
+            } catch (error) {
+                console.error('🐝 Error marking word as used:', error);
+            }
+        }
+
+        function updateStudentScore(studentId, points) {
+            try {
+                const student = competitionData.students.find(s => s.id === studentId);
+                student.score = (student.score || 0) + points;
+                
+                saveData();
+                updateStudentDisplay(studentId);
+                updateStudentsCompleted();
+                updateLeaderboard();
+            } catch (error) {
+                console.error('🐝 Error updating student score:', error);
+            }
+        }
+
+        function updateStudentDisplay(studentId) {
+            try {
+                const student = competitionData.students.find(s => s.id === studentId);
+                document.getElementById('studentScore').textContent = student.score;
+            } catch (error) {
+                console.error('🐝 Error updating student display:', error);
+            }
+        }
+
+        function updateStudentsCompleted() {
+            try {
+                const completed = competitionData.students.filter(s => s.questionsAttempted >= 10).length;
+                competitionData.studentsCompleted = completed;
+                document.getElementById('studentsCompleted').textContent = completed;
+                
+                saveData();
+            } catch (error) {
+                console.error('🐝 Error updating students completed:', error);
+            }
+        }
+
+        function updateWordsRemaining() {
+            try {
+                const remaining = competitionData.words.filter(w => w.status === "available").length;
+                document.getElementById('wordsRemaining').textContent = remaining;
+            } catch (error) {
+                console.error('🐝 Error updating words remaining:', error);
+            }
+        }
+
+        function updateLeaderboard() {
+            try {
+                const leaderboardList = document.getElementById('leaderboardList');
+                leaderboardList.innerHTML = '';
+                
+                const sortedStudents = [...competitionData.students]
+                    .sort((a, b) => b.score - a.score)
+                    .slice(0, 10);
+                
+                if (sortedStudents.length === 0) {
+                    leaderboardList.innerHTML = '<div class="leaderboard-item">🐝 No scores yet</div>';
+                    return;
+                }
+                
+                sortedStudents.forEach((student, index) => {
+                    const leaderDiv = document.createElement('div');
+                    leaderDiv.className = `leaderboard-item ${index === 0 ? 'first-place' : index === 1 ? 'second-place' : index === 2 ? 'third-place' : ''}`;
+                    
+                    const positionSpan = document.createElement('span');
+                    positionSpan.className = 'leader-position';
+                    positionSpan.textContent = formatNumber(index + 1);
+                    
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'leader-name';
+                    nameSpan.textContent = student.name;
+                    
+                    const scoreSpan = document.createElement('span');
+                    scoreSpan.className = 'leader-score';
+                    scoreSpan.textContent = `${student.score} pts`;
+                    
+                    const progressBar = document.createElement('div');
+                    progressBar.className = 'student-progress-bar';
+                    
+                    const progressFill = document.createElement('div');
+                    progressFill.className = 'student-progress-fill';
+                    const progressPercent = (student.score / 20) * 100;
+                    progressFill.style.width = `${Math.min(progressPercent, 100)}%`;
+                    
+                    progressBar.appendChild(progressFill);
+                    
+                    const medalSpan = document.createElement('span');
+                    medalSpan.className = 'medal-icon';
+                    if (index === 0) {
+                        medalSpan.textContent = '🥇';
+                    } else if (index === 1) {
+                        medalSpan.textContent = '🥈';
+                    } else if (index === 2) {
+                        medalSpan.textContent = '🥉';
+                    } else {
+                        medalSpan.textContent = '🎖️';
+                    }
+                    
+                    leaderDiv.appendChild(positionSpan);
+                    leaderDiv.appendChild(nameSpan);
+                    leaderDiv.appendChild(scoreSpan);
+                    leaderDiv.appendChild(progressBar);
+                    leaderDiv.appendChild(medalSpan);
+                    
+                    leaderboardList.appendChild(leaderDiv);
+                });
+            } catch (error) {
+                console.error('🐝 Error updating leaderboard:', error);
+            }
+        }
+
+        // Start the application
+        window.onload = init;
+    </script>
+</body>
+</html>
